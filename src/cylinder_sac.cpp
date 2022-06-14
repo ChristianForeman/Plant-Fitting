@@ -45,7 +45,7 @@ int main() {
   pcl::PointIndices::Ptr inliers_plane (new pcl::PointIndices), inliers_cylinder (new pcl::PointIndices);
 
   // Read in the cloud data
-  reader.read ("pcs/high_quality_branch.pcd", *cloud);
+  reader.read ("pcs/branch_with_leaves.pcd", *cloud);
   std::cerr << "PointCloud has: " << cloud->size () << " data points." << std::endl;
 
 //   // Build a passthrough filter to remove spurious NaNs and scene background
@@ -100,7 +100,7 @@ int main() {
   seg.setMethodType (pcl::SAC_RANSAC);
   seg.setNormalDistanceWeight (0.1);
   seg.setMaxIterations (10000);
-  seg.setDistanceThreshold (0.10);
+  seg.setDistanceThreshold (0.05);
   seg.setRadiusLimits (0, 0.1);
   seg.setInputCloud (cloud);
   seg.setInputNormals (cloud_normals);
@@ -125,7 +125,7 @@ int main() {
   else
   {
 	  std::cerr << "PointCloud representing the cylindrical component: " << cloud_cylinder->size () << " data points." << std::endl;
-	  writer.write ("pcs/high_quality_branch_cyl_comp.pcd", *cloud_cylinder, false);
+	  writer.write ("pcs/branch_with_leaves_cyl_comp.pcd", *cloud_cylinder, false);
   }
   return (0);
 }

@@ -25,7 +25,6 @@ int main (int argc, char** argv) {
     }
 
     pcl::io::savePCDFileASCII ("pcs/pc_grid.pcd", cloud);
-    std::cerr << "Saved " << cloud.size () << " data points to test_pcd.pcd." << std::endl;
 
     return (0);
 }

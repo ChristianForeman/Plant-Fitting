@@ -23,8 +23,8 @@ int main(int argc, char ** argv) {
     cube_marker.color.a = 0.3;
 
     double radius = 0.0288058;
-    cube_marker.scale.x = radius * 2;
-    cube_marker.scale.y = radius * 2;
+    cube_marker.scale.x = radius * 3;
+    cube_marker.scale.y = radius * 3;
     cube_marker.scale.z = 10;
 
     // cube_marker.pose.position.x = -0.44714;
@@ -35,13 +35,23 @@ int main(int argc, char ** argv) {
     // cube_marker.pose.orientation.y = -0.0358;
     // cube_marker.pose.orientation.z = 1.04719 + 0.24933; // 0.24933
 
-    cube_marker.pose.position.x = 1.03729;
-    cube_marker.pose.position.y = 0.4332;
-    cube_marker.pose.position.z =  0.3988;
+    // cube_marker.pose.position.x = 1.03729;
+    // cube_marker.pose.position.y = 0.4332;
+    // cube_marker.pose.position.z =  0.3988;
+    // // why do we add one to the z orientation???
+    // cube_marker.pose.orientation.x = -0.9644;
+    // cube_marker.pose.orientation.y = 0.06838;
+    // cube_marker.pose.orientation.z = 1 - 0.255243; // 0.24933
+
+
+    cube_marker.pose.position.x = 0.6179;
+    cube_marker.pose.position.y = -0.4425;
+    cube_marker.pose.position.z =  1.16848;
     // why do we add one to the z orientation???
-    cube_marker.pose.orientation.x = -0.9644;
-    cube_marker.pose.orientation.y = 0.06838;
-    cube_marker.pose.orientation.z = 1 - 0.255243; // 0.24933
+    cube_marker.pose.orientation.x = -0.9685;
+    cube_marker.pose.orientation.y = 0.2317;
+    cube_marker.pose.orientation.z = 1 + 0.0904; // 0.24933
+
     while (pub.getNumSubscribers() < 1) {
         if (!ros::ok())
         {
