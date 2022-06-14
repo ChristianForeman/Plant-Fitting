@@ -50,3 +50,6 @@ target_link_libraries(cylinder_sac ${catkin_LIBRARIES})
 
 add_executable(cylinder_marker src/cylinder_marker.cpp)
 target_link_libraries(cylinder_marker ${catkin_LIBRARIES})
+
+add_executable(pc_grid_maker src/pc_grid_maker.cpp)
+target_link_libraries(pc_grid_maker ${catkin_LIBRARIES})

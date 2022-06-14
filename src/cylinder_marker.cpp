@@ -17,23 +17,31 @@ int main(int argc, char ** argv) {
     cube_marker.color.g = 0.5;
     cube_marker.color.b = 0.5;
 
-    cube_marker.header.frame_id = "camera_rviz"; 
+    cube_marker.header.frame_id = "camera_depth_optical_frame"; 
     cube_marker.header.stamp = ros::Time::now();
 
     cube_marker.color.a = 0.3;
 
-    cube_marker.scale.x = 2;
-    cube_marker.scale.y = 2;
-    cube_marker.scale.z = 2;
+    double radius = 0.0288058;
+    cube_marker.scale.x = radius * 2;
+    cube_marker.scale.y = radius * 2;
+    cube_marker.scale.z = 10;
 
-    cube_marker.pose.position.x = 3.4832;
-    cube_marker.pose.position.y = 0.507;
-    cube_marker.pose.position.z =  1.05535;
+    // cube_marker.pose.position.x = -0.44714;
+    // cube_marker.pose.position.y = 0.5448;
+    // cube_marker.pose.position.z =  0.01454;
 
-    cube_marker.pose.orientation.x = -0.96;
-    cube_marker.pose.orientation.y = 0.01;
-    cube_marker.pose.orientation.z = -0.25;
+    // cube_marker.pose.orientation.x = 0.9677;
+    // cube_marker.pose.orientation.y = -0.0358;
+    // cube_marker.pose.orientation.z = 1.04719 + 0.24933; // 0.24933
 
+    cube_marker.pose.position.x = 1.03729;
+    cube_marker.pose.position.y = 0.4332;
+    cube_marker.pose.position.z =  0.3988;
+    // why do we add one to the z orientation???
+    cube_marker.pose.orientation.x = -0.9644;
+    cube_marker.pose.orientation.y = 0.06838;
+    cube_marker.pose.orientation.z = 1 - 0.255243; // 0.24933
     while (pub.getNumSubscribers() < 1) {
         if (!ros::ok())
         {
@@ -42,6 +50,10 @@ int main(int argc, char ** argv) {
         ROS_WARN_ONCE("Please create a subscriber to the marker");
         sleep(1);
     }
-
-    pub.publish(cube_marker);
+    std::cout << "Publishing" << std::endl;
+    int i = 0;
+    while( i < 50) {
+        pub.publish(cube_marker);
+        ++i;
+    }
 }
